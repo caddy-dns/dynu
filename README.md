@@ -1,24 +1,23 @@
-**DEVELOPER INSTRUCTIONS:**
-
-- Update module name in go.mod
-- Update dependencies to latest versions
-- Update name and year in license
-- Customize configuration and Caddyfile parsing
-- Update godocs / comments (especially provider name and nuances)
-- Update README and remove this section
-
----
-
-\<PROVIDER\> module for Caddy
+Dynu module for Caddy
 ===========================
 
-This package contains a DNS provider module for [Caddy](https://github.com/caddyserver/caddy). It can be used to manage DNS records with \<PROVIDER\>.
+This package contains a DNS provider module for [Caddy](https://github.com/caddyserver/caddy). It can be used to manage DNS records with Dynu.
 
 ## Caddy module name
 
 ```
-dns.providers.provider_name
+dns.providers.dynu
 ```
+
+## Caddyfile definition
+
+```
+duckdns [<api_token>] {
+    api_token <api_token>
+}
+```
+
+- `api_token` may be specified as an argument to the `dynu` directive, or in the body.
 
 ## Config examples
 
@@ -30,8 +29,8 @@ To use this module for the ACME DNS challenge, [configure the ACME issuer in you
 	"challenges": {
 		"dns": {
 			"provider": {
-				"name": "provider_name",
-				"api_token": "YOUR_PROVIDER_API_TOKEN"
+				"name": "dynu",
+				"api_token": "YOUR_DYNU_API_TOKEN"
 			}
 		}
 	}
@@ -41,15 +40,13 @@ To use this module for the ACME DNS challenge, [configure the ACME issuer in you
 or with the Caddyfile:
 
 ```
-# globally
-{
-	acme_dns provider_name ...
+tls {
+	dns dynu {env.DYNU_API_TOKEN}
 }
 ```
 
-```
-# one site
-tls {
-	dns provider_name ...
-}
-```
+You can replace `{env.DYNU_API_TOKEN}` with the actual auth token if you prefer to put it directly in your config instead of an environment variable.
+
+## Authenticating
+
+See the [associated README in the libdns package](https://github.com/taviowong/libdns-dynu) for important information about credentials. Your API token can be found when logged in at https://www.dynu.com/ControlPanel/APICredentials.
