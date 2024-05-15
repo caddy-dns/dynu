@@ -24,6 +24,7 @@ func (Provider) CaddyModule() caddy.ModuleInfo {
 // Provision sets up the module. Implements caddy.Provisioner.
 func (p *Provider) Provision(ctx caddy.Context) error {
 	p.Provider.APIToken = caddy.NewReplacer().ReplaceAll(p.Provider.APIToken, "")
+	p.Provider.OwnDomain = caddy.NewReplacer().ReplaceAll(p.Provider.OwnDomain, "")
 	return nil
 }
 
@@ -54,6 +55,16 @@ func (p *Provider) UnmarshalCaddyfile(d *caddyfile.Dispenser) error {
 				if d.NextArg() {
 					return d.ArgErr()
 				}
+			case "own_domain":
+				if p.Provider.OwnDomain != "" {
+					return d.Err("Own domain already set")
+				}
+				if d.NextArg() {
+					p.Provider.OwnDomain = d.Val()
+				}
+				if d.NextArg() {
+					return d.ArgErr()
+				}
 			default:
 				return d.Errf("unrecognized subdirective '%s'", d.Val())
 			}
@@ -61,6 +72,9 @@ func (p *Provider) UnmarshalCaddyfile(d *caddyfile.Dispenser) error {
 	}
 	if p.Provider.APIToken == "" {
 		return d.Err("missing API token")
+	}
+	if p.Provider.OwnDomain == "" {
+		return d.Err("missing own domain")
 	}
 	return nil
 }

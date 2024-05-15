@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/caddyserver/caddy/v2 v2.7.6
-	github.com/taviowong/libdns-dynu v0.0.2
+	github.com/taviowong/libdns-dynu v0.0.3
 )
 
 require (
