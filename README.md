@@ -12,12 +12,14 @@ dns.providers.dynu
 ## Caddyfile definition
 
 ```
-duckdns [<api_token>] {
+dynu [<api_token>] {
     api_token <api_token>
+    own_domain <own_domain>
 }
 ```
 
 - `api_token` may be specified as an argument to the `dynu` directive, or in the body.
+- `own_domain` should be set to the root domain returned from /dns/getroot/{hostname} of the Dynu API. For example, if you have a subdomain my.dynu.com, this should be set to my.dynu.com so that the correct hostname is used to update Dynu. This is needed as the zone used by Caddy DNS challenge is different from the subdomain provided by Dynu.
 
 ## Config examples
 
@@ -30,7 +32,8 @@ To use this module for the ACME DNS challenge, [configure the ACME issuer in you
 		"dns": {
 			"provider": {
 				"name": "dynu",
-				"api_token": "YOUR_DYNU_API_TOKEN"
+				"api_token": "YOUR_DYNU_API_TOKEN",
+				"own_domain": "YOUR_OWN_DYNU_DOMAIN"
 			}
 		}
 	}
@@ -41,7 +44,9 @@ or with the Caddyfile:
 
 ```
 tls {
-	dns dynu {env.DYNU_API_TOKEN}
+	dns dynu {env.DYNU_API_TOKEN} {
+		own_domain {env.OWN_DYNU_DOMAIN}
+	}
 }
 ```
 
