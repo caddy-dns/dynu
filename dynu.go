@@ -32,9 +32,8 @@ func (p *Provider) Provision(ctx caddy.Context) error {
 //
 //	providername [<api_token>] {
 //	    api_token <api_token>
+//	    own_domain <own_domain>
 //	}
-//
-// **THIS IS JUST AN EXAMPLE AND NEEDS TO BE CUSTOMIZED.**
 func (p *Provider) UnmarshalCaddyfile(d *caddyfile.Dispenser) error {
 	for d.Next() {
 		if d.NextArg() {
