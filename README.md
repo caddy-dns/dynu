@@ -54,4 +54,4 @@ You can replace `{env.DYNU_API_TOKEN}` with the actual auth token if you prefer 
 
 ## Authenticating
 
-See the [associated README in the libdns package](https://github.com/taviowong/libdns-dynu) for important information about credentials. Your API token can be found when logged in at https://www.dynu.com/ControlPanel/APICredentials.
+See the [associated README in the libdns package](https://github.com/libdns/dynu) for important information about credentials. Your API token can be found when logged in at https://www.dynu.com/ControlPanel/APICredentials.

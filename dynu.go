@@ -3,7 +3,7 @@ package dynu
 import (
 	"github.com/caddyserver/caddy/v2"
 	"github.com/caddyserver/caddy/v2/caddyconfig/caddyfile"
-	dynu "github.com/taviowong/libdns-dynu"
+	dynu "github.com/libdns/dynu"
 )
 
 // Provider lets Caddy read and manipulate DNS records hosted by this DNS provider.

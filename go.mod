@@ -1,10 +1,10 @@
-module github.com/taviowong/caddy-dns-dynu
+module github.com/caddy-dns/dynu
 
 go 1.19
 
 require (
 	github.com/caddyserver/caddy/v2 v2.7.6
-	github.com/taviowong/libdns-dynu v0.0.3
+	github.com/libdns/dynu v0.1.0
 )
 
 require (
