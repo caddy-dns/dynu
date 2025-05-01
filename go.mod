@@ -6,7 +6,7 @@ toolchain go1.24.2
 
 require (
 	github.com/caddyserver/caddy/v2 v2.10.0
-	github.com/libdns/dynu v0.1.2-0.20250501141950-b3b21ad56d0a
+	github.com/libdns/dynu v1.0.0
 )
 
 require (
