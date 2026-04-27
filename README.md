@@ -21,7 +21,7 @@ dynu [<api_token>] {
 ```
 
 - `api_token` may be specified as an argument to the `dynu` directive, or in the body.
-- `own_domain` should be set to the root domain returned from /dns/getroot/{hostname} of the Dynu API. For example, if you have a subdomain my.dynu.com, this should be set to my.dynu.com so that the correct hostname is used to update Dynu. This is needed as the zone used by Caddy DNS challenge is different from the subdomain provided by Dynu.
+- `own_domain` should be set to the root domain returned from /dns/getroot/{hostname} of the Dynu API. For example, if you have a subdomain my.dynu.com, this should be set to dynu.com so that the correct hostname is used to update Dynu. This is needed as the zone used by Caddy DNS challenge is different from the subdomain provided by Dynu.
 
 ## Config examples
 
