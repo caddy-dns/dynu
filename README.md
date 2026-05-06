@@ -49,6 +49,11 @@ tls {
 	dns dynu {env.DYNU_API_TOKEN} {
 		own_domain {env.OWN_DYNU_DOMAIN}
 	}
+
+	# you might need these parameters to delay the propagation
+
+	#propagation_delay 2m
+  	#propagation_timeout -1
 }
 ```
 
